@@ -27,6 +27,10 @@ app.use('/api/auth', authRoutes);
 app.use('/api/ai', aiRoutes);
 app.use('/api/discovery', discoveryRoutes);
 
+// ✅ ADD THIS HERE 👇
+app.get("/", (req, res) => {
+    res.send("Backend is running 🚀");
+});
 // Autonomous Discovery Trigger (Every 24 hours) - Run once on start then every 24h
 // discoveryController.runDiscovery(); // Optional: trigger on boot
 setInterval(() => {
