@@ -2,7 +2,7 @@ import axios from 'axios'
 import { io } from 'socket.io-client'
 import { create } from 'zustand'
 
-const SOCKET_URL = import.meta.env.VITE_SOCKET_URL || 'http://localhost:5004'
+const SOCKET_URL = import.meta.env.VITE_SOCKET_URL || 'https://ai-startup-idea-evaluator-and-generator-3.onrender.com/'
 
 const useAIStore = create((set, get) => ({
     ideas: [],

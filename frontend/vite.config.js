@@ -7,7 +7,7 @@ export default defineConfig({
     port: 3000,
     proxy: {
       '/api': {
-        target: 'http://localhost:5004',
+        target: 'https://ai-startup-idea-evaluator-and-generator-3.onrender.com/',
         changeOrigin: true
       }
     }
