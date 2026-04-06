@@ -1,8 +1,7 @@
 import axios from 'axios'
 import { io } from 'socket.io-client'
 import { create } from 'zustand'
-
-const SOCKET_URL = import.meta.env.VITE_SOCKET_URL || 'https://ai-startup-idea-evaluator-and-generator-3.onrender.com/'
+import { API_BASE_URL, SOCKET_URL } from '../config'
 
 const useAIStore = create((set, get) => ({
     ideas: [],
@@ -36,7 +35,7 @@ const useAIStore = create((set, get) => ({
         set({ loading: true, streamingContent: '', isStreaming: true })
         const token = localStorage.getItem('token')
         try {
-            const { data } = await axios.post('/api/ai/generate-ideas', params, {
+            const { data } = await axios.post(`${API_BASE_URL}/api/ai/generate-ideas`, params, {
                 headers: { Authorization: `Bearer ${token}` }
             })
             set({ ideas: data.ideas, loading: false, isStreaming: false })
@@ -50,7 +49,7 @@ const useAIStore = create((set, get) => ({
         set({ loading: true, currentEvaluation: null })
         const token = localStorage.getItem('token')
         try {
-            const { data } = await axios.post('/api/ai/evaluate-idea', params, {
+            const { data } = await axios.post(`${API_BASE_URL}/api/ai/evaluate-idea`, params, {
                 headers: { Authorization: `Bearer ${token}` }
             })
             set({ currentEvaluation: data, loading: false })

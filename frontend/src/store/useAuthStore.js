@@ -1,5 +1,6 @@
-import { create } from 'zustand'
 import axios from 'axios'
+import { create } from 'zustand'
+import { API_BASE_URL } from '../config'
 
 const useAuthStore = create((set) => ({
     user: null,
@@ -10,7 +11,7 @@ const useAuthStore = create((set) => ({
     login: async (credentials) => {
         set({ loading: true, error: null })
         try {
-            const { data } = await axios.post('/api/auth/login', credentials)
+            const { data } = await axios.post(`${API_BASE_URL}/api/auth/login`, credentials)
             set({ user: data.user, token: data.token, loading: false })
             localStorage.setItem('token', data.token)
         } catch (err) {
@@ -21,7 +22,7 @@ const useAuthStore = create((set) => ({
     register: async (userData) => {
         set({ loading: true, error: null })
         try {
-            const { data } = await axios.post('/api/auth/register', userData)
+            const { data } = await axios.post(`${API_BASE_URL}/api/auth/register`, userData)
             set({ user: data.user, token: data.token, loading: false })
             localStorage.setItem('token', data.token)
         } catch (err) {
@@ -38,7 +39,7 @@ const useAuthStore = create((set) => ({
         const token = localStorage.getItem('token')
         if (!token) return
         try {
-            const { data } = await axios.get('/api/auth/me', {
+            const { data } = await axios.get(`${API_BASE_URL}/api/auth/me`, {
                 headers: { Authorization: `Bearer ${token}` }
             })
             set({ user: data })
