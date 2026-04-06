@@ -23,7 +23,7 @@ const io = new Server(server, {
 app.use(cors());
 app.use(express.json());
 
-app.use('/api/auth', authRoutes);
+app.use('https://ai-startup-idea-evaluator-and-generator-1.onrender.com/api/auth', authRoutes);
 app.use('/api/ai', aiRoutes);
 app.use('/api/discovery', discoveryRoutes);
 
