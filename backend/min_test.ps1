@@ -1,4 +1,4 @@
-$baseUrl = "http://localhost:5000/api"
+$baseUrl = "https://ai-startup-idea-evaluator-and-generator-1.onrender.com/api"
 $testEmail = "test_" + (Get-Random) + "@test.com"
 $testPass = "Pass123!"
 
